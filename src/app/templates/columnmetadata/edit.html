@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="row">
+    <login-menu></login-menu>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h5> {{headerTxt}}</h5>
+      <div>
+
+        <ul class="bg-danger">
+          <li *ngFor="let message of messages">{{message}}</li>
+        </ul>
+
+        <form #columnmetadataForm="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="identifier">Identifier</label>
+              <input type="text" class="form-control" required
+                     [(ngModel)]="columnmetadata.identifier"
+                     ngControl="identifier" #identifier="ngForm">
+              <div [hidden]="identifier.valid || identifier.pristine" class="alert alert-danger">
+                Identifier is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="display_name">Display Name</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="columnmetadata.display_name" required
+                     ngControl="display_name" #display_name="ngForm">
+              <div [hidden]="display_name.valid || display_name.pristine" class="alert alert-danger">
+                Display name is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="internal_name">Internal Name</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="columnmetadata.internal_name" required
+                     ngControl="internal_name" #internal_name="ngForm">
+              <div [hidden]="internal_name.valid || internal_name.pristine" class="alert alert-danger">
+                Internal name is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="value_type">Value type</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="columnmetadata.value_type" required
+                     ngControl="value_type" #value_type="ngForm">
+              <div [hidden]="value_type.valid || value_type.pristine" class="alert alert-danger">
+                Value type is required
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="formatter_id">Formatter</label>
+              <select class="form-control"
+                      [(ngModel)]="columnmetadata.formatter_id" ngControl="formatter_id" #formatter_id="ngForm">
+                <option *ngFor="let formatter of formatters" [value]="formatter.id">{{formatter.identifier}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="visible">Visible</label>
+              <select class="form-control" required
+                      [(ngModel)]="columnmetadata.visible" ngControl="visible" #visible="ngForm">
+                <option *ngFor="let visible of visibles" [value]="visible">{{visible}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="editable">Editable</label>
+              <select class="form-control" required
+                      [(ngModel)]="columnmetadata.editable" ngControl="editable" #editable="ngForm">
+                <option *ngFor="let edible of edibiles" [value]="edible">{{edible}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="internal">Internal</label>
+              <select class="form-control" required
+                      [(ngModel)]="columnmetadata.internal" ngControl="internal" #internal="ngForm">
+                <option *ngFor="let internal of internals" [value]="internal">{{internal}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!columnmetadataForm.form.valid"><span
+                class="glyphicon glyphicon-floppy-save"></span>Save
+              </button>
+              <a class="btn btn-sm btn-primary" (click)="onCancel()"><span
+                class="glyphicon glyphicon-remove"></span>Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

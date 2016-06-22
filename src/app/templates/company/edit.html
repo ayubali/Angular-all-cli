@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <login-menu></login-menu>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h5> {{headerTxt}}</h5>
+      <div>
+
+        <ul class="bg-danger">
+          <li *ngFor="let message of messages">{{message}}</li>
+        </ul>
+
+        <form #companyForm="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" required
+                     [(ngModel)]="company.name"
+                     ngControl="name" #name="ngForm">
+              <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                Name is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="Logo">Logo URL</label>
+              <input type="text" class="form-control"
+                     [(ngModel)]="company.logo_url"
+                     ngControl="logo_url">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!companyForm.form.valid"><span
+                class="glyphicon glyphicon-floppy-save"></span>Save</button>
+              <a class="btn btn-sm btn-primary" (click)="onCancel()"><span
+                class="glyphicon glyphicon-remove"></span>Cancel</a>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

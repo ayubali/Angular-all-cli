@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <login-menu></login-menu>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h5> {{headerTxt}}</h5>
+      <div>
+
+        <ul class="bg-danger">
+          <li *ngFor="let message of messages">{{message}}</li>
+        </ul>
+
+        <form #helpTextForm="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="identifier">Identifier</label>
+              <input type="text" class="form-control" required
+                     [(ngModel)]="helpText.identifier"
+                     ngControl="identifier" #identifier="ngForm">
+              <div [hidden]="identifier.valid || identifier.pristine" class="alert alert-danger">
+                Identifier is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-7">
+              <label for="helpText">Help Text</label>
+              <textarea class="form-control" rows="8"
+                        [(ngModel)]="helpText.helptext"
+                        ngControl="helptext" #helptext="ngForm">
+</textarea>
+              <div [hidden]="helptext.valid || helptext.pristine" class="alert alert-danger">
+                Help Text is required
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!helpTextForm.form.valid"><span
+                class="glyphicon glyphicon-floppy-save"></span>Save
+              </button>
+              <a class="btn btn-sm btn-primary" (click)="onCancel()"><span
+                class="glyphicon glyphicon-remove"></span>Cancel</a>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

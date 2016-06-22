@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <login-menu></login-menu>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="row bg-primary" style="padding: 3px">
+        <span class="col-sm-6 col-md-6 pull-left">Column Meta Data</span>
+        <span class="col-sm-6 col-md-6 "><a [routerLink]="['/columnmetadata/new']"
+                                            class="btn btn-primary pull-right"><span
+          class="glyphicon glyphicon-plus"></span>Add</a></span>
+      </div>
+      <br/>
+      <ul class="bg-danger">
+        <li *ngFor="let message of messages">{{message}}</li>
+      </ul>
+      <div class="table-responsive">
+
+        <div class="column">
+          <label class="control">Search Data
+            <input type="text" class="input" placeholder="Search" [(ngModel)]="filter">
+          </label>
+        </div>
+        <table class="table table-condensed table-hover table-responsive table-striped small">
+          <thead>
+          <tr>
+            <th>Identifier</th>
+            <th>Display Name</th>
+            <th>Internal Name</th>
+            <th>Value Type</th>
+            <th>Visible</th>
+            <th>Editable</th>
+            <th>Internal</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+            *ngFor="let columnMetaData of  columnMetaDatum| async |ColumnMetaDataFilter: filter | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: currPage, totalItems: total }">
+            <td>{{columnMetaData.identifier}}</td>
+            <td>{{columnMetaData.display_name}}</td>
+            <td>{{columnMetaData.internal_name}}</td>
+            <td>{{columnMetaData.value_type}}</td>
+            <td>{{columnMetaData.visible}}</td>
+            <td>{{columnMetaData.editable}}</td>
+            <td>{{columnMetaData.internal}}</td>
+            <td>
+              <a class="btn btn-sm  btn-primary" (click)="onEdit(columnMetaData)"><span
+                class="glyphicon glyphicon-pencil"></span>edit</a>
+              <a class="btn btn-sm alert-danger" disabled="disabled"
+                 rel="nofollow"><span
+                class="glyphicon glyphicon-trash"></span>delete</a>
+            </td>
+
+          </tr>
+          </tbody>
+
+          <tfoot>
+          <tr>
+            <td colspan="8" class="bg-info">
+              <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+              <pagination-controls (pageChange)="getPage($event)" id="server"
+                                   style="font-size: 14px; font-weight: bold"></pagination-controls>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+

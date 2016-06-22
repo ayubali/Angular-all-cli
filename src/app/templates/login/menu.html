@@ -1,0 +1,22 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <ul class="nav nav-sidebar">
+    <li class="active"><a href="#">Keymaker <span class="sr-only">(current)</span></a></li>
+    <li><a [routerLink] ="['/applications']">Applications</a></li>
+    <li><a  [routerLink] ="['/companies']">Companies</a></li>
+    <li class="divider"></li>
+
+    <li><a href="">Users</a></li>
+    <li><a href="">Roles</a></li>
+
+    <li class="divider"></li>
+
+    <li><a [routerLink] ="['/validations']">Validations</a></li>
+    <li><a [routerLink] ="['/formatters']">Formatters</a></li>
+    <li><a [routerLink] ="['/columnmetadata']">Column Meta Data</a></li>
+    <li><a [routerLink] ="['/panorama']">Panorama Compatibility</a></li>
+    <li><a [routerLink] ="['/helptexts']">HelpTexts</a></li>
+
+    <li class="divider"></li>
+    <li><a href="" (click)="logout()">Logout</a></li>
+  </ul>
+</div>

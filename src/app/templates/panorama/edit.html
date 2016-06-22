@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <login-menu></login-menu>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h5> {{headerTxt}}</h5>
+      <div>
+
+        <ul class="bg-danger">
+          <li *ngFor="let message of messages">{{message}}</li>
+        </ul>
+
+        <form #panoramaForm="ngForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="panorama_version">Panorama Version</label>
+              <input type="text" class="form-control" required
+                     [(ngModel)]="panoramaCompatibility.panorama_version"
+                     ngControl="panorama_version" #panorama_version="ngForm">
+              <div [hidden]="panorama_version.valid || panorama_version.pristine" class="alert alert-danger">
+                Panorama Version is required
+              </div>
+            </div>
+</div>
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <label for="te_version">Trade Engine Version</label>
+              <input type="text" class="form-control" required
+                     [(ngModel)]="panoramaCompatibility.te_version"
+                     ngControl="te_version" #te_version="ngForm">
+              <div [hidden]="te_version.valid || te_version.pristine" class="alert alert-danger">
+                Trade Engine Version is required
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="form-group col-sm-7 col-md-5">
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="!panoramaForm.form.valid"><span
+                class="glyphicon glyphicon-floppy-save"></span>Save</button>
+              <a class="btn btn-sm btn-primary" (click)="onCancel()"><span
+                class="glyphicon glyphicon-remove"></span>Cancel</a>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

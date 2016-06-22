@@ -1,0 +1,19 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+
+}
+.table-responsive .small {
+  font-size: 90%;
+}
